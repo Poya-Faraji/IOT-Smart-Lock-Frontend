@@ -2,12 +2,15 @@ const unlockBtnElem = document.getElementById("unlock-btn");
 const cancelBtnElem = document.getElementById("cancel-btn");
 const statusTextElem = document.getElementById("lock-status");
 
+
+const API_URL = 'https://smart-iot-lock.onrender.com'
+
 unlockBtnElem.addEventListener("click", () => {
   unlock();
 });
 
 const unlock = async () => {
-  await fetch("http://localhost:8888/api/unlock/", { method: "POST" })
+  await fetch(`${API_URL}/api/unlock/`, { method: "POST" })
     .then((response) => response.text())
     .then((data) => {
       console.log(data);
@@ -16,7 +19,7 @@ const unlock = async () => {
 };
 
 const reset = async () => {
-  await fetch("http://localhost:8888/api/reset/", { method: "POST" })
+  await fetch(`${API_URL}/api/reset/`, { method: "POST" })
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -26,7 +29,7 @@ const reset = async () => {
 
 
 const lockSimulation = async () => {
-  await fetch("http://localhost:8888/api/unlock/", { method: "GET" })
+  await fetch(`${API_URL}/api/unlock/`, { method: "GET" })
     .then((response) => response.text())
     .then((data) => {
       statusTextElem.innerText = `Unlocked : ${data}`
@@ -41,4 +44,4 @@ cancelBtnElem.addEventListener("click", () => {
 
 setInterval(() => {
   lockSimulation()
-}, 2000);
+}, 3000);
