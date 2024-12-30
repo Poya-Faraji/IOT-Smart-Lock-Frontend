@@ -70,6 +70,16 @@ body {
   background: transparent;
 }
 
+.glow-on-hover:disabled,
+.glow-on-hover:disabled:hover,
+.glow-on-hover:disabled::after,
+.glow-on-hover:disabled::before {
+  border: 1px solid white !important;
+  opacity: 0.5 !important;
+  background: #000 !important;
+  cursor: default;
+}
+
 .glow-on-hover:hover:before {
   opacity: 1;
 }
